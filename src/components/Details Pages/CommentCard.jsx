@@ -23,6 +23,14 @@ export default function CommentCard() {
           adipisicing elit. Soluta ipsum sint accusantium iusto necessitatibus
           praesentium voluptatibus cupiditate nobis est tempore?
         </p>
+        <div className="small d-flex justify-content-between mt-3">
+          <div className="btn-action d-flex">
+            <a href="#!" className="d-flex align-items-center">
+              <i className="far fa-thumbs-up me-2" />
+              <p className="mb-0">Reply</p>
+            </a>
+          </div>
+        </div>
         <div className="reply-comment ps-5 mt-3">
           <div className="d-flex flex-start align-items-center">
             <img

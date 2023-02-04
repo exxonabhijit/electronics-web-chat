@@ -36,55 +36,55 @@ export default function PostDetailPage() {
             alt=""
             style={{ width: "100%", height: "auto" }}
           />
+          <div className="small d-flex justify-content-between mt-3">
+            <div className="btn-action d-flex">
+              <a href="#!" className="d-flex align-items-center me-3">
+                <i className="far fa-thumbs-up me-2" />
+                <p className="mb-0">Like</p>
+              </a>
+              <a href="#!" className="d-flex align-items-center me-3">
+                <i className="far fa-comment-dots me-2" />
+                <p className="mb-0">Comment</p>
+              </a>
+            </div>
+            <a href="#!" className="d-flex align-items-center me-3">
+              <i className="fas fa-share me-2" />
+              <p className="mb-0">Private Chat</p>
+            </a>
+          </div>
+          <div className="px-3 py-2 border-0">
+            <div className="d-flex flex-start w-100">
+              <img
+                className="rounded-circle shadow-1-strong me-3"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                alt="avatar"
+                width={40}
+                height={40}
+              />
+              <div className="form-outline w-100">
+                {/* <textarea className="form-control" id="textAreaExample" rows={4} style={{background: '#fff'}} defaultValue={"Comment"} /> */}
+                <textarea
+                  className="form-control w-100 bg-light"
+                  placeholder="Leave a comment here"
+                  id="floatingTextarea2"
+                  style={{ height: 100 }}
+                  defaultValue={""}
+                />
+              </div>
+            </div>
+            <div className="float-end mt-2 pt-1 d-flex">
+              <button className="btn-standard">Submit</button>
+            </div>
+          </div>
         </div>
         <div className="row mt-5">
           <h4 className="text-muted fw-normal fs-4 mb-3">Comments</h4>
           <hr />
           <div className="row">
             <CommentCard />
-            <div className="comment-body mb-4">
-              <div className="d-flex flex-start align-items-center">
-                <img
-                  className="rounded-circle shadow-1-strong me-3"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                  alt="avatar"
-                  width={40}
-                  height={40}
-                />
-                <div>
-                  <h6 className="fw-bold text-danger mb-1">Rahul Mhatre</h6>
-                  <p className="text-muted small mb-0">
-                    Shared publicly - Jan 2020
-                  </p>
-                </div>
-              </div>
-              <p className="text-muted fw-bold mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                et laudantium optio eaque. Saepe! Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Soluta ipsum sint accusantium
-                iusto necessitatibus praesentium voluptatibus cupiditate nobis
-                est tempore?
-              </p>
-              <div className="reply-comment ps-5 mt-3">
-                <div className="d-flex flex-start align-items-center">
-                  <img
-                    className="rounded-circle shadow-1-strong me-3"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                    alt="avatar"
-                    width={40}
-                    height={40}
-                  />
-                  <div>
-                    <h6 className="fw-bold text-danger mb-1">Pandhari Sheth Phadke</h6>
-                    <p className="text-muted small mb-0">
-                      Shared publicly - Jan 2020
-                    </p>
-                  </div>
-                </div>
-                <p className="text-muted fw-bold mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, labore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi architecto eaque exercitationem dolore.</p>
-              </div>
-              <hr />
-            </div>
+            <CommentCard />
+            <CommentCard />
+            <CommentCard />
             <div className="comment-body mb-4">
               <div className="d-flex flex-start align-items-center">
                 <img
@@ -104,6 +104,14 @@ export default function PostDetailPage() {
               <p className="text-muted fw-bold mt-3">
                 Pappanna sangty satish che kad paise taka t aaikat ny 🤧🤧🤧🤧.
               </p>
+              <div className="small d-flex justify-content-between mt-3">
+                <div className="btn-action d-flex">
+                  <a href="#!" className="d-flex align-items-center">
+                    <i className="far fa-thumbs-up" />
+                    <p className="mb-0">Reply</p>
+                  </a>
+                </div>
+              </div>
               <hr />
             </div>
             <div className="comment-body mb-4">
@@ -126,6 +134,14 @@ export default function PostDetailPage() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. est
                 tempore?
               </p>
+              <div className="small d-flex justify-content-between mt-3">
+                <div className="btn-action d-flex">
+                  <a href="#!" className="d-flex align-items-center">
+                    <i className="far fa-thumbs-up me-2" />
+                    <p className="mb-0">Reply</p>
+                  </a>
+                </div>
+              </div>
               <hr />
             </div>
           </div>

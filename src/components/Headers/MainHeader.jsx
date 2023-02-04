@@ -91,7 +91,7 @@ export default function MainHeader() {
                   Home
                 </a>
               </li>
-              <li className="menu-category">
+              {/* <li className="menu-category">
                 <a href="#" className="menu-title">
                   Categories
                 </a>
@@ -217,8 +217,8 @@ export default function MainHeader() {
                     </li>
                   </ul>
                 </div>
-              </li>
-              <li className="menu-category">
+              </li> */}
+              {/* <li className="menu-category">
                 <a href="#" className="menu-title">
                   Men's
                 </a>
@@ -236,78 +236,21 @@ export default function MainHeader() {
                     <a href="#">Wallet</a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               <li className="menu-category">
                 <a href="#" className="menu-title">
-                  Women's
-                </a>
-                <ul className="dropdown-list">
-                  <li className="dropdown-item">
-                    <a href="#">Dress &amp; Frock</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Earrings</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Necklace</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Makeup Kit</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-category">
-                <a href="#" className="menu-title">
-                  Jewelry
-                </a>
-                <ul className="dropdown-list">
-                  <li className="dropdown-item">
-                    <a href="#">Earrings</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Couple Rings</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Necklace</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Bracelets</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-category">
-                <a href="#" className="menu-title">
-                  Perfume
-                </a>
-                <ul className="dropdown-list">
-                  <li className="dropdown-item">
-                    <a href="#">Clothes Perfume</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Deodorant</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Flower Fragrance</a>
-                  </li>
-                  <li className="dropdown-item">
-                    <a href="#">Air Freshener</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-category">
-                <a href="#" className="menu-title">
-                  Blog
+                  About Us
                 </a>
               </li>
               <li className="menu-category">
                 <a href="#" className="menu-title">
-                  Hot Offers
+                  Contact Us
                 </a>
               </li>
             </ul>
           </div>
         </nav>
-        <div className="mobile-bottom-navigation">
+        {/* <div className="mobile-bottom-navigation">
           <button className="action-btn" data-mobile-menu-open-btn>
             <ion-icon name="menu-outline" />
           </button>
@@ -325,8 +268,8 @@ export default function MainHeader() {
           <button className="action-btn" data-mobile-menu-open-btn>
             <ion-icon name="grid-outline" />
           </button>
-        </div>
-        <nav className="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
+        </div> */}
+        {/* <nav className="mobile-navigation-menu  has-scrollbar" data-mobile-menu>
           <div className="menu-top">
             <h2 className="menu-title">Menu</h2>
             <button className="menu-close-btn" data-mobile-menu-close-btn>
@@ -541,7 +484,7 @@ export default function MainHeader() {
               </li>
             </ul>
           </div>
-        </nav>
+        </nav> */}
       </header>
     </>
   );

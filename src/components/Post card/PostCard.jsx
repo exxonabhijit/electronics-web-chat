@@ -23,7 +23,7 @@ export default function PostCard() {
             {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
               <textarea
                 className="form-control w-100 bg-light"
-                placeholder="Leave a comment here"
+                placeholder="What's on your mind, Abhijit Mhatre"
                 id="floatingTextarea2"
                 style={{ height: 100}}
                 defaultValue={""}
@@ -34,6 +34,9 @@ export default function PostCard() {
             <div className="col-12 col-sm-4 col-md-4 col-lg-4 ">
               {/* <button className='btn d-flex justify-content-center'><img src="../../../public/images/icons/photos-10602.svg" alt="" className='upload me-2' /><span>PHOTOS</span></button> */}
               <input type="file" className="custom-file-input" />
+            </div>
+            <div className="col-md-4 col-12 col-lg-4 col-sm-4">
+              <button className="btn-standard">POST</button>
             </div>
           </div>
         </div>

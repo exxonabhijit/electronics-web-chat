@@ -13,6 +13,7 @@ import PostDetailPage from "./pages/PostDetailPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import ProfilePage from "./pages/ProfilePage";
+import Error404 from "./pages/Error404";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/sign_up" element={<SignUpPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post_detail/:id" element={<PostDetailPage />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>

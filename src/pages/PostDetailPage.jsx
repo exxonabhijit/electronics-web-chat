@@ -1,7 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import CommentCard from "../components/Details Pages/CommentCard";
 
 export default function PostDetailPage() {
+  const { id } = useParams();
+  console.log("exxonverse post id", id);
   return (
     <>
       <div className="container">

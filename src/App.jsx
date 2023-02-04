@@ -10,22 +10,26 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import PostDetailPage from "./pages/PostDetailPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import ProfilePage from "./pages/ProfilePage";
+
 function App() {
   return (
     <>
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />}>
-            <Route path=":slug" element={<PostDetailPage />} />
-          </Route>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign_up" element={<SignUpPage />} />
-          <Route path="/post_detail" element={<PostDetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/post_detail/:id" element={<PostDetailPage />} />
         </Routes>
         <Footer />
       </Router>
-      ;
     </>
   );
 }

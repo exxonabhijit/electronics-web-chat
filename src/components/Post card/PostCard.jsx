@@ -6,7 +6,7 @@ export default function PostCard() {
     <>
       <div className="card shadow-sm border-0 mb-4">
         <div className="card-body">
-        <div className="d-flex justify-content-between mb-3">
+          <div className="d-flex justify-content-between mb-3">
             <div className="profile-section d-flex">
               <img
                 src="../../../public/images/icons/user-3296.svg"
@@ -20,23 +20,23 @@ export default function PostCard() {
             <div className="edit-section"></div>
           </div>
           {/* <div className="d-flex"> */}
-            {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
-              <textarea
-                className="form-control w-100 bg-light"
-                placeholder="What's on your mind, Abhijit Mhatre"
-                id="floatingTextarea2"
-                style={{ height: 100}}
-                defaultValue={""}
-              />
+          {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
+          <textarea
+            className="form-control w-100 bg-light"
+            placeholder="What's on your mind, Abhijit Mhatre"
+            id="floatingTextarea2"
+            style={{ height: 100 }}
+            defaultValue={""}
+          />
           {/* </div> */}
           <hr />
           <div className="row d-flex justify-content-center">
             <div className="col-12 col-sm-4 col-md-4 col-lg-4 ">
               {/* <button className='btn d-flex justify-content-center'><img src="../../../public/images/icons/photos-10602.svg" alt="" className='upload me-2' /><span>PHOTOS</span></button> */}
-              <input type="file" className="custom-file-input" />
+              <input type="file" className="custom-file-input mb-2" />
             </div>
             <div className="col-md-4 col-12 col-lg-4 col-sm-4">
-              <button className="btn-standard">POST</button>
+              <button className="btn-standard me-3">POST</button>
             </div>
           </div>
         </div>

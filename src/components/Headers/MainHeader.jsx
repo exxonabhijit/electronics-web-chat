@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 export default function MainHeader() {
   return (
@@ -87,9 +88,9 @@ export default function MainHeader() {
           <div className="container1">
             <ul className="desktop-menu-category-list">
               <li className="menu-category">
-                <a href="#" className="menu-title">
+                <Link to="/" className="menu-title">
                   Home
-                </a>
+                </Link>
               </li>
               {/* <li className="menu-category">
                 <a href="#" className="menu-title">
@@ -238,14 +239,14 @@ export default function MainHeader() {
                 </ul>
               </li> */}
               <li className="menu-category">
-                <a href="#" className="menu-title">
+                <Link to="/about" className="menu-title">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="menu-category">
-                <a href="#" className="menu-title">
+                <Link to="/contact" className="menu-title">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

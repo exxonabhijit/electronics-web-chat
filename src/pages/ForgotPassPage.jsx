@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export default function LoginPage() {
+export default function ForgotPassPage() {
   return (
     <>
       <div className="container-fluid">
@@ -44,24 +43,10 @@ export default function LoginPage() {
                         Invalid Password
                       </div>
                     </div>
-                    <div className="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="exampleCheck1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleCheck1"
-                      >
-                        Show Password
-                      </label>
-                    </div>
-
                     <div className="mb-3">
                       <Link
                         to="/sign_up"
-                        className="text-end text-muted fw-normal"
+                        className="text-start text-muted fw-normal"
                       >
                         Forgot Password ?
                       </Link>

@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   return (
     <>
       <div className="container-fluid">
@@ -11,6 +10,38 @@ export default function LoginPage() {
               <div className="card p-5 border-0 shadow-sm">
                 <div className="card-body">
                   <form>
+                    <div className="mb-3">
+                      <div className="row">
+                        <div className="col-12 col-md-6 col-lg-6">
+                          <label
+                            htmlFor="exampleInputEmail1"
+                            className="form-label text-muted fw-normal"
+                          >
+                            First Name
+                          </label>
+                          <input
+                            type="text"
+                            aria-describedby="firstNameHelp"
+                            className="form-control border-0 bg-light"
+                            required
+                          />
+                        </div>
+                        <div className="col-12 col-md-6 col-lg-6">
+                          <label
+                            htmlFor="exampleInputEmail1"
+                            className="form-label text-muted fw-normal"
+                          >
+                            Last Name
+                          </label>
+                          <input
+                            type="text"
+                            aria-describedby="LastNameHelp"
+                            className="form-control border-0 bg-light"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
                     <div className="mb-3">
                       <label
                         htmlFor="exampleInputEmail1"
@@ -22,6 +53,7 @@ export default function LoginPage() {
                         type="email"
                         aria-describedby="emailHelp"
                         className="form-control border-0 bg-light"
+                        required
                       />
                       <div id="emailHelp" className="form-text text-danger">
                         Invalid username
@@ -39,6 +71,7 @@ export default function LoginPage() {
                         className="form-control border-0 bg-light"
                         id="exampleInputPassword1"
                         aria-describedby="passwordHelp"
+                        required
                       />
                       <div id="passwordHelp" className="form-text text-danger">
                         Invalid Password
@@ -49,6 +82,7 @@ export default function LoginPage() {
                         type="checkbox"
                         className="form-check-input"
                         id="exampleCheck1"
+                        required
                       />
                       <label
                         className="form-check-label"
@@ -56,15 +90,6 @@ export default function LoginPage() {
                       >
                         Show Password
                       </label>
-                    </div>
-
-                    <div className="mb-3">
-                      <Link
-                        to="/sign_up"
-                        className="text-end text-muted fw-normal"
-                      >
-                        Forgot Password ?
-                      </Link>
                     </div>
                     <button type="submit" className="btn-standard ">
                       Login

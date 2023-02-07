@@ -284,7 +284,7 @@ export default function MainFooter() {
                   <ion-icon name="location-outline" />
                 </div>
                 <address className="content">
-                  At.Govathane,Post.Aware,Tal.uran,Raigad,Maharashtra.
+                  At.Govathane,Post.Aware,<br /> Tal.uran,Raigad,Maharashtra.
                 </address>
               </li>
               <li className="footer-nav-item flex">

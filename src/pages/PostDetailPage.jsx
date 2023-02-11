@@ -1,16 +1,22 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "../components/Details Pages/CommentCard";
 
 export default function PostDetailPage() {
   const { id } = useParams();
   console.log("exxonverse post id", id);
+
+  const navigate = useNavigate(); //For back button
+
   return (
     <>
       <div className="container">
         <div className="row mb-3">
-          <button className="btn btn-transparent mb-3 text-start fw-bold text-muted">
-            Back
+          <button
+            className="mb-3 text-start fw-bold text-muted"
+            onClick={() => navigate(-1)}
+          >
+             Back
           </button>
           <div className="d-flex flex-start align-items-center">
             <img

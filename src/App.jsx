@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import PostDetailPage from "./pages/PostDetailPage";
+import ProductDetails from "./pages/ProductDetails";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/sign_up" element={<SignUpPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/post_detail/:id" element={<PostDetailPage />} />
+          <Route path="/product_detail/:id" element={<ProductDetails />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />

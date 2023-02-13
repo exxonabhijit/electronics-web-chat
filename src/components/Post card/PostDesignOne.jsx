@@ -22,7 +22,7 @@ export default function PostDesignOne() {
               </div>
             </div>
           </Link>
-          <p className="mt-3 mb-4 pb-2 text-muted fw-bold">
+          <p className="mt-3 mb-4 pb-2 text-muted lead">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

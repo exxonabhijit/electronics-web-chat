@@ -135,8 +135,8 @@ export default function SignUpPage() {
                         Show Password
                       </label>
                     </div>
-                    <button type="submit" className="btn-standard ">
-                      Login
+                    <button type="submit" className="btn-standard text-uppercase">
+                      register
                     </button>
                   </form>
                   <Link to={"/login"} className="text-center mt-4 text-muted">

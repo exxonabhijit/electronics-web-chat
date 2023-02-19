@@ -103,15 +103,15 @@ export default function LoginPage() {
                       </label>
                     </div>
 
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                       <Link
                         to="/sign_up"
                         className="text-end text-muted fw-normal"
                       >
                         Forgot Password ?
                       </Link>
-                    </div>
-                    <button type="submit" className="btn-standard ">
+                    </div> */}
+                    <button type="submit" className="btn-standard text-uppercase">
                       Login
                     </button>
                   </form>

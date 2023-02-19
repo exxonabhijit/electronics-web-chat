@@ -108,10 +108,10 @@ export default function MainHeader() {
                 </>
               ) : (
                 <div className="d-flex">
-                  <Link to={"/login"} className="btn-standard text-white me-3">
+                  <Link to={"/login"} className=" text-danger me-3 text-uppercase">
                     Login
                   </Link>
-                  <Link to={"/sign_up"} className="btn-standard text-white">
+                  <Link to={"/sign_up"} className="text-danger text-uppercase">
                     SignUp
                   </Link>
                 </div>

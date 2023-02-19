@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BannerSection from "../sections/Home Section/BannerSection";
 import FeatureSection from "../sections/Home Section/FeatureSection";
 import SidebarSection from "../sections/Sidebar Section/Sidebar";
-import ChatBox from "../components/Chat Box/ChatBox";
+import { getUserInfo } from "../store/Auth/authActions.js";
+import { useDispatch } from "react-redux";
 
 export default function HomePage() {
-  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, []);
   return (
     <>
       <main>

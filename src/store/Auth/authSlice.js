@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { userLogin, registerUser } from "./authActions";
+import { userLogin, registerUser, getUserInfo } from "./authActions";
 
 const initialState = {
   loading: false,
@@ -7,6 +7,7 @@ const initialState = {
   error: null,
   userToken: null,
   success: false,
+  userDetail: null,
 };
 
 const authSlice = createSlice({
@@ -18,6 +19,7 @@ const authSlice = createSlice({
       localStorage.removeItem("userToken");
       state.userInfo = null;
       state.userToken = null;
+      state.userDetail = null;
       state.error = null;
     }
   },
@@ -50,6 +52,20 @@ const authSlice = createSlice({
       state.loading = false
       state.error = action.payload
     },
+
+    //! #######  get user info  #######
+    [getUserInfo.pending]: (state) => {
+      state.loading = true
+      state.error = null
+    },
+    [getUserInfo.fulfilled]: (state, action) => {
+      state.loading = false
+      state.userDetail = action.payload
+    },
+    [getUserInfo.rejected]: (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    }
   },
 });
 

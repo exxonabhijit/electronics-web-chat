@@ -5,7 +5,7 @@ export default function PostDesignOne() {
     <>
       <div className="card border-0 shadow-sm mb-3">
         <div className="card-body">
-          <Link to="/profile">
+          {/* <Link to="/profile"> */}
             <div className="d-flex flex-start align-items-center">
               <img
                 className="rounded-circle shadow-1-strong me-3"
@@ -21,7 +21,7 @@ export default function PostDesignOne() {
                 </p>
               </div>
             </div>
-          </Link>
+          {/* </Link> */}
           <p className="mt-3 mb-4 pb-2 text-muted lead">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

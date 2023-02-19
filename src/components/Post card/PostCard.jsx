@@ -1,7 +1,17 @@
 import React from "react";
 import "./PostCard.css";
+import { useSelector } from "react-redux";
 
 export default function PostCard() {
+  const { userDetail } = useSelector((state) => state.auth);
+  console.log("userDetails", userDetail);
+
+  const date = new Date();
+  const month = date.toLocaleString("default", { month: "long" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  const today = `${day} ${month}.${year}`;
+
   return (
     <>
       <div className="card shadow-sm border-0 mb-4">
@@ -14,7 +24,8 @@ export default function PostCard() {
                 className="rounded-circle profile me-2 img-fluid"
               />
               <p className="text-muted fw-bold fs-6 pt-3">
-                Abhijit Mhatre, <span className="date-title">25 May.1999</span>
+                {userDetail ? userDetail.name : "Hey, user"},{" "}
+                <span className="date-title">{today}</span>
               </p>
             </div>
             <div className="edit-section"></div>
@@ -23,7 +34,9 @@ export default function PostCard() {
           {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
           <textarea
             className="form-control w-100 bg-light"
-            placeholder="What's on your mind, Abhijit Mhatre"
+            placeholder={`What's on your mind ${
+              userDetail ? userDetail.name : "Hey, user"
+            } ?`}
             id="floatingTextarea2"
             style={{ height: 100 }}
             defaultValue={""}

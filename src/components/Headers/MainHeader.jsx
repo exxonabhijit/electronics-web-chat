@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../store/Auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function MainHeader() {
+  //? Getting token from local storage
   const isAuthenticated = localStorage.getItem("userToken");
 
   const dispatch = useDispatch();
@@ -15,6 +16,11 @@ export default function MainHeader() {
     dispatch(logoutUser());
     navigate("/login");
   };
+
+  //? Getting user info from auth slice
+  const { userDetail } = useSelector((state) => state.auth);
+
+  console.log("userdetails", userDetail);
 
   return (
     <>
@@ -93,14 +99,24 @@ export default function MainHeader() {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <small className="me-3 pb-3">Hi, Abhijit</small>
+                    {userDetail ? (
+                      <>
+                        <small className="me-3 pb-3">
+                          Hi, {userDetail.name}
+                        </small>
+                      </>
+                    ) : ""}
                     <span>
                       <ion-icon name="person-outline" />
                     </span>
                   </button>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li>
-                      <button className="dropdown-item" type="button" onClick={handleLogout}>
+                      <button
+                        className="dropdown-item"
+                        type="button"
+                        onClick={handleLogout}
+                      >
                         Logout
                       </button>
                     </li>
@@ -108,7 +124,10 @@ export default function MainHeader() {
                 </>
               ) : (
                 <div className="d-flex">
-                  <Link to={"/login"} className=" text-danger me-3 text-uppercase">
+                  <Link
+                    to={"/login"}
+                    className=" text-danger me-3 text-uppercase"
+                  >
                     Login
                   </Link>
                   <Link to={"/sign_up"} className="text-danger text-uppercase">

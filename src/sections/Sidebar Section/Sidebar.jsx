@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BestSellerSidebar from "../../components/Sidebars/BestSellerSidebar";
 import CategorySidebar from "../../components/Sidebars/CategorySidebar";
 import PostCard from "../../components/Post card/PostCard";
@@ -6,7 +6,16 @@ import SocialMediaCard from "../../components/Post card/SocialMediaCard";
 import ProductList from "../../components/Product List/ProductList";
 import PostDesignOne from "../../components/Post card/PostDesignOne";
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+//! import fetchAllPosts action from postActions
+import { fetchAllPosts } from "../../store/Posts/postsActions";
+
 export default function Sidebar() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllPosts());
+  }, []);
   return (
     <>
       <div className="product-container1">
@@ -18,14 +27,8 @@ export default function Sidebar() {
           <div className="product-box">
             <div className="product-main">
               <PostCard />
-              <PostDesignOne />
-              <PostDesignOne />
-              <PostDesignOne />
               <ProductList />
               <PostDesignOne />
-              <PostDesignOne />
-              <PostDesignOne />
-              <ProductList />
             </div>
           </div>
         </div>

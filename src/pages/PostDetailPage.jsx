@@ -1,12 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "../components/Details Pages/CommentCard";
+import { fetchPostById } from "../store/Posts/postsActions.js";
+import { useDispatch } from "react-redux";
 
 export default function PostDetailPage() {
-  const { id } = useParams();
-  console.log("exxonverse post id", id);
-
   const navigate = useNavigate(); //For back button
+
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+  useEffect(() => {
+    console.log("post id", id);
+    dispatch(fetchPostById(id));
+  }, []);
 
   return (
     <>
@@ -16,7 +24,7 @@ export default function PostDetailPage() {
             className="mb-3 text-start fw-bold text-muted"
             onClick={() => navigate(-1)}
           >
-             Back
+            Back
           </button>
           <div className="d-flex flex-start align-items-center">
             <img

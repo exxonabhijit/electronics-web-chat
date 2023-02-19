@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 //! Importing Router here
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 
 //! Importing Pages here
 import Header from "./components/Headers/MainHeader";
@@ -15,8 +20,10 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import ProfilePage from "./pages/ProfilePage";
 import Error404 from "./pages/Error404";
+import AllProductsPage from "./pages/AllProductsPage";
 
 function App() {
+
   return (
     <>
       <Router>
@@ -28,10 +35,16 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign_up" element={<SignUpPage />} />
           <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/post_detail/:id" element={<PostDetailPage />} />
-          <Route path="/product_detail/:id" element={<ProductDetails />} />
+          <Route path="all_products" element={<AllProductsPage />} />
+          <Route path="post">
+            <Route path=":id" element={<PostDetailPage />} />
+          </Route>
+          <Route path="product">
+            <Route path=":id" element={<ProductDetails />} />
+          </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
+        <Outlet />
         <Footer />
       </Router>
     </>

@@ -1,7 +1,21 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { logoutUser } from "../../store/Auth/authSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function MainHeader() {
+  const isAuthenticated = localStorage.getItem("userToken");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  //! Logout function
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate("/login");
+  };
+
   return (
     <>
       <header>
@@ -70,9 +84,38 @@ export default function MainHeader() {
               </button>
             </div> */}
             <div className="header-user-actions">
-              <button className="action-btn">
-                <ion-icon name="person-outline" />
-              </button>
+              {isAuthenticated ? (
+                <>
+                  <button
+                    className="action-btn dropdown-toggle fs-5 fw-bold"
+                    type="button"
+                    id="dropdownMenu2"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <small className="me-3 pb-3">Hi, Abhijit</small>
+                    <span>
+                      <ion-icon name="person-outline" />
+                    </span>
+                  </button>
+                  <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li>
+                      <button className="dropdown-item" type="button" onClick={handleLogout}>
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <div className="d-flex">
+                  <Link to={"/login"} className="btn-standard text-white me-3">
+                    Login
+                  </Link>
+                  <Link to={"/sign_up"} className="btn-standard text-white">
+                    SignUp
+                  </Link>
+                </div>
+              )}
               {/* <button className="action-btn">
                 <ion-icon name="heart-outline" />
                 <span className="count">0</span>

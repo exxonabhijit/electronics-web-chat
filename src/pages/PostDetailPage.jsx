@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentCard from "../components/Details Pages/CommentCard";
 import { fetchPostById } from "../store/Posts/postsActions.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function PostDetailPage() {
   const navigate = useNavigate(); //For back button
@@ -12,9 +12,12 @@ export default function PostDetailPage() {
 
   const { id } = useParams();
   useEffect(() => {
-    console.log("post id", id);
     dispatch(fetchPostById(id));
   }, []);
+
+  //! get post by id from redux store
+
+  const singlePost = useSelector((state) => state.posts.singlePost);
 
   return (
     <>
@@ -98,9 +101,6 @@ export default function PostDetailPage() {
           <h4 className="text-muted fw-normal fs-4 mb-3">Comments</h4>
           <hr />
           <div className="row">
-            <CommentCard />
-            <CommentCard />
-            <CommentCard />
             <CommentCard />
             <div className="comment-body mb-4">
               <div className="d-flex flex-start align-items-center">

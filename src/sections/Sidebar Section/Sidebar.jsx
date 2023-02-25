@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BestSellerSidebar from "../../components/Sidebars/BestSellerSidebar";
 import CategorySidebar from "../../components/Sidebars/CategorySidebar";
 import PostCard from "../../components/Post card/PostCard";
-import SocialMediaCard from "../../components/Post card/SocialMediaCard";
 import ProductList from "../../components/Product List/ProductList";
 import PostDesignOne from "../../components/Post card/PostDesignOne";
-import { Outlet } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //! import fetchAllPosts action from postActions
 import { fetchAllPosts } from "../../store/Posts/postsActions";
@@ -16,6 +14,11 @@ export default function Sidebar() {
   useEffect(() => {
     dispatch(fetchAllPosts());
   }, []);
+
+  //! get all posts from redux store
+  const posts = useSelector((state) => state?.posts?.posts);
+
+  console.log("all posts", posts?.data);
   return (
     <>
       <div className="product-container1">
@@ -27,13 +30,16 @@ export default function Sidebar() {
           <div className="product-box">
             <div className="product-main">
               <PostCard />
-              <ProductList />
-              <PostDesignOne />
+              <ProductList show="show" />
+              <>
+                {posts?.data?.map((post) => (
+                  <PostDesignOne Post={post} key={post.id} />
+                ))}
+              </>
             </div>
           </div>
         </div>
       </div>
-      <Outlet />
     </>
   );
 }

@@ -1,34 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function PostDesignOne() {
+export default function PostDesignOne({ Post }) {
+  const handleOpenWhatsApp = () => {
+    const phoneNumber = '9167365416'; // Replace with the phone number you want to send a message to
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
+  };
+  console.log("====================================");
+  console.log("Single Post Title", Post.title, "Single Post ID", Post.id);
+  console.log("====================================");
   return (
     <>
       <div className="card border-0 shadow-sm mb-3">
         <div className="card-body">
           {/* <Link to="/profile"> */}
-            <div className="d-flex flex-start align-items-center">
-              <img
-                className="rounded-circle shadow-1-strong me-3"
-                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                alt="avatar"
-                width={60}
-                height={60}
-              />
-              <div>
-                <h6 className="fw-bold text-danger mb-1">Lily Coleman</h6>
-                <p className="text-muted small mb-0">
-                  Shared publicly - Jan 2020
-                </p>
-              </div>
+          <div className="d-flex flex-start align-items-center">
+            <img
+              className="rounded-circle shadow-1-strong me-3"
+              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+              alt="avatar"
+              width={60}
+              height={60}
+            />
+            <div>
+              <h6 className="fw-bold text-danger mb-1">Lily Coleman</h6>
+              <p className="text-muted small mb-0">
+                Shared publicly - Jan 2020
+              </p>
             </div>
+          </div>
           {/* </Link> */}
-          <p className="mt-3 mb-4 pb-2 text-muted lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip consequat.
-          </p>
-          <Link to={`/post/${1}`}>
+          <Link to={`/post/${Post.id}`}>
+          <p className="mt-3 mb-4 pb-2 text-muted lead">{Post.title}</p>
             <img
               src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
               className="post-image img-fluid"
@@ -43,12 +45,12 @@ export default function PostDesignOne() {
               </a>
               <a href="#!" className="d-flex align-items-center me-3">
                 <i className="far fa-comment-dots me-2" />
-                <p className="mb-0">Comment</p>
+                <p className="mb-0">Comments</p>
               </a>
             </div>
             <a href="#!" className="d-flex align-items-center me-3">
               <i className="fas fa-share me-2" />
-              <p className="mb-0">Private Chat</p>
+              <p className="mb-0" onClick={handleOpenWhatsApp}>Private Chat</p>
             </a>
           </div>
         </div>

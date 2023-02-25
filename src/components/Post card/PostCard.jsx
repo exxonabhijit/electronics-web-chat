@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 export default function PostCard() {
   const { userDetail } = useSelector((state) => state.auth);
-  console.log("userDetails", userDetail);
 
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
@@ -24,7 +23,7 @@ export default function PostCard() {
                 className="rounded-circle profile me-2 img-fluid"
               />
               <p className="text-muted fw-bold fs-6 pt-3">
-                {userDetail ? userDetail.name : "Hey, user"},{" "}
+                {userDetail ? userDetail.name : "Hey user"},{" "}
                 <span className="date-title">{today}</span>
               </p>
             </div>
@@ -35,7 +34,7 @@ export default function PostCard() {
           <textarea
             className="form-control w-100 bg-light"
             placeholder={`What's on your mind ${
-              userDetail ? userDetail.name : "Hey, user"
+              userDetail ? userDetail.name : "Hey user"
             } ?`}
             id="floatingTextarea2"
             style={{ height: 100 }}

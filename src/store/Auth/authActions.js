@@ -3,7 +3,7 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 //! BASE_URL comming from .env file
-const BASE_URL = "http://13.234.17.204/api";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 //! Login User action
 export const userLogin = createAsyncThunk(
@@ -20,7 +20,6 @@ export const userLogin = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response && error.response.data) {
-        console.log("error.response.data.message", error.response.data.message);
         return rejectWithValue(error.response.data);
       } else {
         return rejectWithValue(error.message);
@@ -43,7 +42,6 @@ export const registerUser = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response && error.response.data) {
-        console.log("error.response.data.message", error.response.data.message);
         return rejectWithValue(error.response.data);
       } else {
         return rejectWithValue(error.message);
@@ -62,13 +60,11 @@ export const getUserInfo = createAsyncThunk(
           Authorization: `Bearer ${localStorage.getItem("userToken")}`,
         },
       });
-      console.log("user info", data);
       if (data.status == 200) {
-        return data;
+        return data.user;
       }
     } catch (error) {
       if (error.response && error.response.data) {
-        console.log("error.response.data.message", error.response.data.message);
         return rejectWithValue(error.response.data);
       } else {
         return rejectWithValue(error.message);

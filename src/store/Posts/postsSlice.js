@@ -5,6 +5,7 @@ const initialState = {
     posts: [],
     loading: false,
     error: null,
+    singlePost: {},
 };
 
 const postsSlice = createSlice({
@@ -17,7 +18,6 @@ const postsSlice = createSlice({
             state.error = null;
         },
         [fetchAllPosts.fulfilled]: (state, action) => {
-            console.log("posts (postsSlice):::", action.payload);
             state.loading = false;
             state.posts = action.payload;
         },
@@ -32,9 +32,8 @@ const postsSlice = createSlice({
             state.error = null;
         },
         [fetchPostById.fulfilled]: (state, action) => {
-            console.log("post by Id (postsSlice):::", action.payload);
             state.loading = false;
-            state.posts = action.payload;
+            state.singlePost = action.payload;
         },
         [fetchPostById.rejected]: (state, action) => {
             state.loading = false;

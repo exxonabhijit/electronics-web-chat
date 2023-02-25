@@ -19,9 +19,6 @@ export default function MainHeader() {
 
   //? Getting user info from auth slice
   const { userDetail } = useSelector((state) => state.auth);
-
-  console.log("userdetails", userDetail);
-
   return (
     <>
       <header>

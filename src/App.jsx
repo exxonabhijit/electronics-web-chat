@@ -36,15 +36,14 @@ function App() {
           <Route path="/sign_up" element={<SignUpPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="all_products" element={<AllProductsPage />} />
-          <Route path="post">
+          <Route path="/post">
             <Route path=":id" element={<PostDetailPage />} />
           </Route>
-          <Route path="product">
+          <Route path="/product">
             <Route path=":id" element={<ProductDetails />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
-        <Outlet />
         <Footer />
       </Router>
     </>

@@ -14,10 +14,11 @@ export default function AllProductsPage() {
     console.log("dispatch order function");
   }, []);
 
-  //! get all products from redux store
-  const AllProducts = useSelector((state) => state?.product?.products);
+  const products = useSelector((state) => state?.products?.products);
 
-  console.log("rendering products", AllProducts);
+  console.log("====================================");
+  console.log("all products page", products?.data);
+  console.log("====================================");
 
   return (
     <>
@@ -28,15 +29,15 @@ export default function AllProductsPage() {
             All Products
           </h4>
         </div>
-        <div className="container mb-3">
+        <div className="container mb-3 pb-3">
           <hr className="text-muted fw-bold" />
           <div className="row bg-light rounded">
             <div className="row row-cols-1 row-cols-md-3 g-4">
-              <ProductCardTwo />
-              <ProductCardTwo />
-              <ProductCardTwo />
-              <ProductCardTwo />
-              <ProductCardTwo />
+              {
+                products?.data?.map((product) => (
+                  <ProductCardTwo product={product} key={product.id} />
+                ))
+              }
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ const initialState = {
   products: [],
   loading: false,
   error: null,
+  product: {},
 };
 
 const productSlice = createSlice({
@@ -17,7 +18,6 @@ const productSlice = createSlice({
       state.error = null;
     },
     [fetchAllProducts.fulfilled]: (state, action) => {
-      console.log("all products", action.payload);
       state.loading = false;
       state.products = action.payload;
     },
@@ -32,7 +32,7 @@ const productSlice = createSlice({
     },
     [fetchProductById.fulfilled]: (state, action) => {
       state.loading = false;
-      state.products = action.payload;
+      state.product = action.payload;
     },
     [fetchProductById.rejected]: (state, action) => {
       state.loading = false;

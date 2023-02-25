@@ -1,17 +1,22 @@
 import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchProductById } from "../store/Product/productActions";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const  product  = useSelector((state) => state?.product);
+
   useEffect(() => {
-    console.log(id);
     dispatch(fetchProductById(id));
-  }, [id]);
+  }, [dispatch, id]);
+
+  console.log("====================================");
+  console.log("product", product);
+  console.log("====================================");
 
   return (
     <>

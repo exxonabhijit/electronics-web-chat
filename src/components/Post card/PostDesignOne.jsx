@@ -30,7 +30,7 @@ export default function PostDesignOne({ Post }) {
           </div>
           {/* </Link> */}
           <Link to={`/post/${Post.id}`}>
-          <p className="mt-3 mb-4 pb-2 text-muted lead">{Post.title}</p>
+          <p className="mt-3 mb-4 pb-2 text-muted lead">{Post.description}</p>
             <img
               src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
               className="post-image img-fluid"
@@ -39,19 +39,12 @@ export default function PostDesignOne({ Post }) {
           </Link>
           <div className="small d-flex justify-content-between mt-3">
             <div className="btn-action d-flex">
-              <a href="#!" className="d-flex align-items-center me-3">
-                <i className="far fa-thumbs-up me-2" />
-                <p className="mb-0">Like</p>
-              </a>
-              <a href="#!" className="d-flex align-items-center me-3">
-                <i className="far fa-comment-dots me-2" />
-                <p className="mb-0">Comments</p>
-              </a>
+                <a href="#" className="mb-0 me-3 cursor-pointer hoverable">{Post.like}Like</a>
+                <Link to={`/post/${Post.id}`} className="mb-0">Comments</Link>
             </div>
-            <a href="#!" className="d-flex align-items-center me-3">
-              <i className="fas fa-share me-2" />
-              <p className="mb-0" onClick={handleOpenWhatsApp}>Private Chat</p>
-            </a>
+            <div className="d-flex align-items-center me-3">
+              <a href="#" className="mb-0" onClick={handleOpenWhatsApp}>Private Chat</a>
+            </div>
           </div>
         </div>
         <div className="px-3 py-2 border-0">

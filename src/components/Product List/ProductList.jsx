@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import ProductCard from "../../components/Product Cards/ProductCardTwo";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../../store/Product/productActions.js";
 import { useEffect } from "react";
 
@@ -12,6 +12,12 @@ export default function ProductList({ show }) {
   useEffect(() => {
     dispatch(fetchAllProducts()); //! dispatch fetchAllProducts action
   }, []);
+
+  const products = useSelector((state) => state?.products?.products); //! get all products from redux store
+
+  console.log("====================================");
+  console.log("All products", products?.data);
+  console.log("====================================");
 
   const gotoNext = () => {
     customeSlider.current.slickNext();
@@ -24,7 +30,6 @@ export default function ProductList({ show }) {
   const customeSlider = createRef();
 
   var settings = {
-    // dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -37,7 +42,6 @@ export default function ProductList({ show }) {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          // dots: true,
         },
       },
       {
@@ -72,24 +76,11 @@ export default function ProductList({ show }) {
         </div>
       </div>
       <Slider {...settings} className="mt-5" ref={customeSlider}>
-        <div>
-          <ProductCard />
-        </div>
-        <div>
-          <ProductCard />
-        </div>
-        <div>
-          <ProductCard />
-        </div>
-        <div>
-          <ProductCard />
-        </div>
-        <div>
-          <ProductCard />
-        </div>
-        <div>
-          <ProductCard />
-        </div>
+        {products?.data?.map((product) => (
+          <>
+            <ProductCard product={product} key={product.id} />
+          </>
+        ))}
       </Slider>
       {show ? (
         <>

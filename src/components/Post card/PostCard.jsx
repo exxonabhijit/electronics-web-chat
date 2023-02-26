@@ -1,6 +1,8 @@
 import React from "react";
 import "./PostCard.css";
 import { useSelector } from "react-redux";
+import { uploadFile } from "../../store/FileUpload/fileActions.js";
+import { useDispatch } from "react-redux";
 
 export default function PostCard() {
   const { userDetail } = useSelector((state) => state.auth);
@@ -10,6 +12,13 @@ export default function PostCard() {
   const day = date.getDate();
   const year = date.getFullYear();
   const today = `${day} ${month}.${year}`;
+
+  const fileUploader = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    useDispatch(uploadFile(formData));
+  };
 
   return (
     <>
@@ -31,26 +40,32 @@ export default function PostCard() {
           </div>
           {/* <div className="d-flex"> */}
           {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
-          <textarea
-            className="form-control w-100 bg-light"
-            placeholder={`What's on your mind ${
-              userDetail ? userDetail.name : "Hey user"
-            } ?`}
-            id="floatingTextarea2"
-            style={{ height: 100 }}
-            defaultValue={""}
-          />
-          {/* </div> */}
-          <hr />
-          <div className="row d-flex justify-content-center">
-            <div className="col-12 col-sm-4 col-md-4 col-lg-4 ">
-              {/* <button className='btn d-flex justify-content-center'><img src="../../../public/images/icons/photos-10602.svg" alt="" className='upload me-2' /><span>PHOTOS</span></button> */}
-              <input type="file" className="custom-file-input mb-2" />
+          <form>
+            <textarea
+              className="form-control w-100 bg-light"
+              placeholder={`What's on your mind ${
+                userDetail ? userDetail.name : "Hey user"
+              } ?`}
+              id="floatingTextarea2"
+              style={{ height: 100 }}
+              defaultValue={""}
+            />
+            {/* </div> */}
+            <hr />
+            <div className="row d-flex justify-content-center">
+              <div className="col-12 col-sm-4 col-md-4 col-lg-4 ">
+                {/* <button className='btn d-flex justify-content-center'><img src="../../../public/images/icons/photos-10602.svg" alt="" className='upload me-2' /><span>PHOTOS</span></button> */}
+                <input
+                  type="file"
+                  className="custom-file-input mb-2"
+                  onChange={fileUploader}
+                />
+              </div>
+              <div className="col-md-4 col-12 col-lg-4 col-sm-4">
+                <button className="btn-standard me-3">POST</button>
+              </div>
             </div>
-            <div className="col-md-4 col-12 col-lg-4 col-sm-4">
-              <button className="btn-standard me-3">POST</button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </>

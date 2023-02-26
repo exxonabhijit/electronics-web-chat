@@ -17,8 +17,6 @@ export default function Sidebar() {
 
   //! get all posts from redux store
   const posts = useSelector((state) => state?.posts?.posts);
-
-  console.log("all posts", posts?.data);
   return (
     <>
       <div className="product-container1">

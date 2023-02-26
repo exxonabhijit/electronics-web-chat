@@ -1,6 +1,12 @@
 import React from "react";
+import moment from "moment";
 
-export default function CommentCard() {
+const date = (created_at) => {
+  return moment(created_at).format("MMMM Do YYYY, h:mm:ss a");
+};
+
+export default function CommentCard({ comment }) {
+  
   return (
     <>
       <div className="comment-body mb-4">
@@ -13,16 +19,13 @@ export default function CommentCard() {
             height={40}
           />
           <div>
-            <h6 className="fw-bold text-danger mb-1">Rahul Mhatre</h6>
-            <p className="text-muted small mb-0">Shared publicly - Jan 2020</p>
+            <h6 className="fw-bold text-danger mb-1">{comment?.user.name}</h6>
+            <p className="text-muted small mb-0">
+              Shared publicly - {date(comment?.created_at)}
+            </p>
           </div>
         </div>
-        <p className="text-muted fw-bold mt-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima et
-          laudantium optio eaque. Saepe! Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Soluta ipsum sint accusantium iusto necessitatibus
-          praesentium voluptatibus cupiditate nobis est tempore?
-        </p>
+        <p className="text-muted fw-bold mt-3">{comment?.comment}</p>
         <div className="small d-flex justify-content-between mt-3">
           <div className="btn-action d-flex">
             <a href="#!" className="d-flex align-items-center">
@@ -32,28 +35,30 @@ export default function CommentCard() {
           </div>
         </div>
         <div className="reply-comment ps-5 mt-3">
-          <div className="d-flex flex-start align-items-center">
-            <img
-              className="rounded-circle shadow-1-strong me-3"
-              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-              alt="avatar"
-              width={40}
-              height={40}
-            />
-            <div>
-              <h6 className="fw-bold text-danger mb-1">
-                Pandhari Sheth Phadke
-              </h6>
-              <p className="text-muted small mb-0">
-                Shared publicly - Jan 2020
-              </p>
-            </div>
-          </div>
-          <p className="text-muted fw-bold mt-3">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-            labore. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Excepturi architecto eaque exercitationem dolore.
-          </p>
+          {comment?.replies?.map((reply) => {
+            return (
+              <>
+                <div className="d-flex flex-start align-items-center" key={reply?.id}>
+                  <img
+                    className="rounded-circle shadow-1-strong me-3"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                    alt="avatar"
+                    width={40}
+                    height={40}
+                  />
+                  <div>
+                    <h6 className="fw-bold text-danger mb-1">
+                      {reply?.user?.name}
+                    </h6>
+                    <p className="text-muted small mb-0">
+                      Shared publicly - {date(reply?.created_at)}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-muted fw-bold mt-3">{reply?.comment}</p>
+              </>
+            );
+          })}
         </div>
         <hr />
       </div>

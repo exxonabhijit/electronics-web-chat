@@ -1,51 +1,51 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductById } from "../store/Product/productActions";
+import axios from "axios";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const dispatch = useDispatch();
 
-  const  product  = useSelector((state) => state?.product);
+  // const dispatch = useDispatch();
+
+  const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
-    dispatch(fetchProductById(id));
-  }, [dispatch, id]);
-
-  console.log("====================================");
-  console.log("product", product);
-  console.log("====================================");
+    axios
+      .get(`${BASE_URL}/product/${id}`)
+      .then((res) => {
+        setProduct(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
   return (
     <>
       <div className="container">
         <div className="row mt-4 h-100">
           <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-            <img
-              src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-              className="img-fluid"
-              alt="product"
-            />
+            <img src={product.image} className="img-fluid" alt="product" />
           </div>
           <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-            <h3>Product Name</h3>
-            <p className="text-muted fw-normal">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              quae. Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Dignissimos dolorem impedit odio ab, maxime, architecto officia
-              hic sequi, ad minus voluptatem? Nobis laboriosam nulla cupiditate
-              totam optio inventore perspiciatis amet! Neque hic aperiam
-              laudantium. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Quisquam, quae. Lorem ipsum dolor sit amet consectetur,
-              adipisicing elit. Dignissimos dolorem impedit odio ab, maxime,
-              architecto officia hic sequi, ad minus voluptatem? Nobis
-              laboriosam nulla cupiditate totam optio inventore perspiciatis
-              amet! Neque hic aperiam laudantium.
-            </p>
+            <h3>{product.name}</h3>
+            <p className="text-muted fw-normal fs-4">{product.description}</p>
             <h4 className="text-muted">
-              <span className="fw-bold">PRICE: ₹100.00</span>
+              <span className="fw-bold">PRICE: ₹{product.price}.00</span>
+              <br />
+              {product?.is_available == 1 ? (
+                <span className="badge bg-success text-uppercase m-2 p-2">
+                  In Stock
+                </span>
+              ) : (
+                <span className="badge bg-danger text-uppercase m-2 p-2">
+                  Out of Stock
+                </span>
+              )}
             </h4>
             <button className="btn-standard fw-bold py-3 mt-3">
               PRIVATE CHAT

@@ -5,7 +5,7 @@ const initialState = {
   products: [],
   loading: false,
   error: null,
-  product: {},
+  product: null,
 };
 
 const productSlice = createSlice({

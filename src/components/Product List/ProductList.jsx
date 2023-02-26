@@ -15,10 +15,6 @@ export default function ProductList({ show }) {
 
   const products = useSelector((state) => state?.products?.products); //! get all products from redux store
 
-  console.log("====================================");
-  console.log("All products", products?.data);
-  console.log("====================================");
-
   const gotoNext = () => {
     customeSlider.current.slickNext();
   };

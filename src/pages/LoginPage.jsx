@@ -33,10 +33,7 @@ export default function LoginPage() {
   });
 
   const onSubmitHandler = (formValue) => {
-    console.log(formValue);
     const { email, password } = formValue;
-    console.log("Email: ", email);
-    console.log("Password: ", password);
 
     dispatch(userLogin({ email, password }));
 

@@ -11,15 +11,9 @@ export default function AllProductsPage() {
 
   useEffect(() => {
     dispatch(fetchAllProducts());
-    console.log("dispatch order function");
   }, []);
 
   const products = useSelector((state) => state?.products?.products);
-
-  console.log("====================================");
-  console.log("all products page", products?.data);
-  console.log("====================================");
-
   return (
     <>
       <main>

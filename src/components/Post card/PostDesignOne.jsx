@@ -4,8 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { createComment } from "../../store/Posts/postsActions.js";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import moment from "moment";
+
+const date = (created_at) => {
+  return moment(created_at).format("MMMM Do YYYY, h:mm:ss a");
+};
 
 const schema = yup.object().shape({
   text: yup.string().required("This filed is required"),
@@ -53,20 +57,22 @@ export default function PostDesignOne({ Post }) {
               height={60}
             />
             <div>
-              <h6 className="fw-bold text-danger mb-1">Lily Coleman</h6>
-              <p className="text-muted small mb-0">
-                Shared publicly - Jan 2020
-              </p>
+              <h6 className="fw-bold text-danger mb-1">{Post.user.name}</h6>
+              <p className="text-muted small mb-0">{date(Post?.created_at)}</p>
             </div>
           </div>
           {/* </Link> */}
           <Link to={`/post/${Post.id}`}>
             <p className="mt-3 mb-4 pb-2 text-muted lead">{Post.description}</p>
-            <img
-              src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-              className="post-image img-fluid"
-              alt=""
-            />
+            {Post.images.length > 0 ? (
+              <img
+                src={Post?.images[0].url}
+                className="post-image img-fluid"
+                alt=""
+              />
+            ) : (
+              ""
+            )}
           </Link>
           <div className="small d-flex justify-content-between mt-3">
             <div className="btn-action d-flex">

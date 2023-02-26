@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     error: null,
     success: false,
-    file: null
+    file: null,
+    id: [],
 };
 
 const fileSlice = createSlice({

@@ -1,11 +1,21 @@
 import React from "react";
 import "./PostCard.css";
-import { useSelector } from "react-redux";
 import { uploadFile } from "../../store/FileUpload/fileActions.js";
-import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { createPost } from "../../store/Posts/postsActions.js";
+
+const schema = yup.object().shape({
+  text: yup.string().required("This filed is required"),
+});
 
 export default function PostCard() {
   const { userDetail } = useSelector((state) => state.auth);
+  const id = useSelector((state) => state?.file?.file?.data?.id);
+
+  const dispacth = useDispatch();
 
   const date = new Date();
   const month = date.toLocaleString("default", { month: "long" });
@@ -17,7 +27,27 @@ export default function PostCard() {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
-    useDispatch(uploadFile(formData));
+    dispacth(uploadFile(formData));
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmitHandler = (formValue) => {
+    const { text } = formValue;
+    const data = {
+      description: text,
+      images: [id],
+    };
+
+    dispacth(createPost(data));
+    reset();
   };
 
   return (
@@ -40,7 +70,7 @@ export default function PostCard() {
           </div>
           {/* <div className="d-flex"> */}
           {/* <input type="text" placeholder='Whats in your mind, Dipesh' className='caption mt-1'/> */}
-          <form>
+          <form onSubmit={handleSubmit(onSubmitHandler)}>
             <textarea
               className="form-control w-100 bg-light"
               placeholder={`What's on your mind ${
@@ -48,7 +78,7 @@ export default function PostCard() {
               } ?`}
               id="floatingTextarea2"
               style={{ height: 100 }}
-              defaultValue={""}
+              {...register("text")}
             />
             {/* </div> */}
             <hr />

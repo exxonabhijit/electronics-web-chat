@@ -9,9 +9,11 @@ export const uploadFile = createAsyncThunk(
   "file/uploadFile",
   async (payload, { rejectWithValue }) => {
     try {
+      let token = localStorage.getItem("userToken");  
       const { data } = await axios.post(`${BASE_URL}/files`, payload, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
         },
       });
       return data;

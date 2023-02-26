@@ -24,12 +24,18 @@ export default function ProductDetails() {
       .catch((err) => console.log(err));
   }, [id]);
 
+  console.log("product data", product?.variants[0]?.images[0]?.url);
+
   return (
     <>
       <div className="container">
         <div className="row mt-4 h-100">
           <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
-            <img src={product.image} className="img-fluid" alt="product" />
+            <img
+              src={product?.variants[0]?.images?.[0]?.url}
+              className="img-fluid"
+              alt="product"
+            />
           </div>
           <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-4">
             <h3>{product.name}</h3>

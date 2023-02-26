@@ -86,7 +86,7 @@ export default function PostDetailPage() {
             {post?.description}
           </p>
           <img
-            src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+          src={post?.images?.[0]}
             className="post-image img-fluid"
             alt=""
             style={{ width: "100%", height: "auto" }}
